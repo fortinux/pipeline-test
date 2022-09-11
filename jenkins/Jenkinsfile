@@ -11,4 +11,14 @@ pipeline {
 			}
 		}
 	}
+       stages {
+                stage('Test') {
+                        agent {
+                                docker { image 'maven' }
+                        }
+                        steps {
+                                sh "mvn clean install"
+                        }
+                }
+        }
 }
